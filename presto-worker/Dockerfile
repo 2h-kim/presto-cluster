@@ -1,4 +1,9 @@
 FROM ubuntu:latest
+
+LABEL Maintainer="Hyunho Kim"
+LABEL Description="Presto Worker"
+LABEL Version="0.0.1"
+
 ARG WORKER_PORT
 ARG NODE_ID
 ARG COORDINATOR_HOST

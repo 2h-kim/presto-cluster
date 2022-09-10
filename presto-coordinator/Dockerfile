@@ -1,7 +1,10 @@
 FROM ubuntu:latest
 
-RUN apt-get update && apt-get -y upgrade
+LABEL Maintainer="Hyunho Kim"
+LABEL Description="Presto Coordinator"
+LABEL Version="0.0.1"
 
+RUN apt-get update && apt-get -y upgrade
 
 # java
 RUN apt-get install openjdk-11-jdk -y
