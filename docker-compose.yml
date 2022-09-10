@@ -1,0 +1,50 @@
+version: '3'
+services:
+  coordinator:
+    build: ./presto-coordinator
+    hostname: coordinator
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./data/presto-coordi:/home/presto/data"
+  worker1:
+    build: 
+      context: ./presto-worker
+      args:
+        WORKER_PORT: 18080
+        NODE_ID: "worker1"
+        COORDINATOR_HOST: "coordinator"
+    hostname: worker1
+    ports:
+      - "18080:18080"
+    volumes:
+      - "./data/worker1:/home/presto/data"
+  worker2:
+    build:
+      context: ./presto-worker
+      args:
+        WORKER_PORT: 28080
+        NODE_ID: "worker2"
+        COORDINATOR_HOST: "coordinator"
+    hostname: worker2
+    ports:
+      - "28080:28080"
+    volumes:
+      - "./data/worker2:/home/presto/data"
+    depends_on:
+      - coordinator
+  worker3:
+    build: 
+      context: ./presto-worker
+      args:
+        WORKER_PORT: 38080
+        NODE_ID: "worker3"
+        COORDINATOR_HOST: "coordinator"
+    hostname: worker3
+    ports:
+      - "38080:38080"
+    volumes:
+      - "./data/worker3:/home/presto/data"
+    depends_on:
+      - coordinator
+      
