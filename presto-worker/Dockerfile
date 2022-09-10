@@ -13,7 +13,7 @@ RUN apt-get update && apt-get -y upgrade
 RUN apt-get install openjdk-11-jdk -y
 RUN apt-get install wget -y
 
-# Miniconda 
+# miniconda 
 RUN wget \
     https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
     && bash Miniconda3-latest-Linux-x86_64.sh -p /miniconda -b \
