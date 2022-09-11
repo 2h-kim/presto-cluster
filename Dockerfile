@@ -45,3 +45,4 @@ COPY ./catalog ${PRESTO_SERVER_HOME}/etc/catalog
 
 
 ENTRYPOINT ["/home/presto/scripts/entrypoint.sh"]
+CMD ["/home/presto/scripts/start-presto.sh"]

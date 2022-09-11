@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # configure
 # config.properties
 : "${PRESTO_CONF_COORDINATOR:=true}"
@@ -73,4 +72,4 @@ presto_log_properties
 presto_node_properties
 
 echo "${PRESTO_SERVER_HOME}/bin/launcher run"
-${PRESTO_SERVER_HOME}/bin/launcher run
+exec "$@"
