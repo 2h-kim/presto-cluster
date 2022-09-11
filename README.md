@@ -22,7 +22,7 @@ docker-compose up -d
 ### Environment Value
 
 | environment value | config file | value | default | 
-| ---- | ---- | ---- | ---- | ---- |
+| ----------------------------------  | ----------------------------------  | ----------------------------------  | ----------------------------------  | 
 | PRESTO_CONF_COORDINATOR | config.properties | coordinator | true |
 | PRESTO_CONF_INCLUDE_COORDINATOR | config.properties | node-scheduler.include-coordinator | true |
 | PRESTO_CONF_HTTP_PORT | config.properties | http-server.http.port | 8080 |
