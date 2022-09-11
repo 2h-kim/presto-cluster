@@ -1,18 +1,5 @@
-# presto db
-presto-coordinator/presto-coordi/bin
-presto-coordinator/presto-coordi/lib
-presto-coordinator/presto-coordi/plugin
-presto-coordinator/presto-coordi/NOTICE
-presto-coordinator/presto-coordi/README.txt
-presto-coordinator/presto-coordi/etc/catalog/personal_mysql.properties
-presto-server-0.276.1
-
-presto-worker/presto-worker/bin
-presto-worker/presto-worker/lib
-presto-worker/presto-worker/plugin
-presto-worker/presto-worker/NOTICE
-presto-worker/presto-worker/README.txt
-presto-worker/presto-worker/etc/catalog/personal_mysql.properties
+# catalog propertie
+catalog/*.properties
 
 # file format
 *.tar.gz

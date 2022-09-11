@@ -1,19 +1,24 @@
 version: '3'
 services:
   coordinator:
-    build: ./presto-coordinator
+    build: .
     hostname: coordinator
     ports:
       - "8080:8080"
+    environment:
+      - PRESTO_CONF_COORDINATOR=true
+      - PRESTO_CONF_INCLUDE_COORDINATOR=false
+      - PRESTO_CONF_DISCOVERY_URI=http://coordinator:8080
     volumes:
-      - "./data/presto-coordi:/home/presto/data"
+      - "./data/coordinator:/home/presto/data"
   worker1:
     build: 
-      context: ./presto-worker
-      args:
-        WORKER_PORT: 18080
-        NODE_ID: "worker1"
-        COORDINATOR_HOST: "coordinator"
+      context: .
+    environment:
+      - PRESTO_CONF_COORDINATOR=false
+      - PRESTO_CONF_INCLUDE_COORDINATOR=false
+      - PRESTO_CONF_HTTP_PORT=18080
+      - PRESTO_CONF_DISCOVERY_URI=http://coordinator:8080
     hostname: worker1
     ports:
       - "18080:18080"
@@ -21,11 +26,12 @@ services:
       - "./data/worker1:/home/presto/data"
   worker2:
     build:
-      context: ./presto-worker
-      args:
-        WORKER_PORT: 28080
-        NODE_ID: "worker2"
-        COORDINATOR_HOST: "coordinator"
+      context: .
+    environment:
+      - PRESTO_CONF_COORDINATOR=false
+      - PRESTO_CONF_INCLUDE_COORDINATOR=false
+      - PRESTO_CONF_HTTP_PORT=28080
+      - PRESTO_CONF_DISCOVERY_URI=http://coordinator:8080
     hostname: worker2
     ports:
       - "28080:28080"
@@ -35,11 +41,12 @@ services:
       - coordinator
   worker3:
     build: 
-      context: ./presto-worker
-      args:
-        WORKER_PORT: 38080
-        NODE_ID: "worker3"
-        COORDINATOR_HOST: "coordinator"
+      context: .
+    environment:
+      - PRESTO_CONF_COORDINATOR=false
+      - PRESTO_CONF_INCLUDE_COORDINATOR=false
+      - PRESTO_CONF_HTTP_PORT=38080
+      - PRESTO_CONF_DISCOVERY_URI=http://coordinator:8080
     hostname: worker3
     ports:
       - "38080:38080"
